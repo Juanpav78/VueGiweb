@@ -1,20 +1,51 @@
+
 <template>
+    <!--HTML EN VUE-->
   <div>
-    <h1>{{mensaje}}</h1>
-    <h2 v-text="texto"></h2>
-    <p v-html="textoHtml"> </p>
-    <input type="text" v-model="inputText">
+    <header>
+      <h1 class="logo">{{logoText}}</h1>
+      <img src="../src/assets/logo.png" alt="Logo Vue">
+    </header>
+    <section class="section1">
+      <img src="../src/assets/logo.png" alt="Logo Vue">
+      <img src="../src/assets/logo.png" alt="Logo Vue">
+      <img src="../src/assets/logo.png" alt="Logo Vue">
+    </section>
+    <main>
+      <div class="titulo">
+        <h2 v-text="vText1"></h2>
+      </div>
+      
+      <p v-html="textoHtml"> </p>
+      <input class="button" type="button" href="www.google.com" v-model="inputText">
+    </main>
+    <footer>
+
+    </footer>
+    
+    
   </div>
 </template>
 <script>
+
+
 export default {
+  //JAVASCRIPT EN VUE
  name: "App",
  data(){
    return {
-     mensaje: "Holaa",
-     texto: "Hola mundo!",
-     textoHtml: '<a href="https://www.google.com/webhp?hl=es&sa=X&ved=0ahUKEwj9w8jAr_73AhUYp3IEHcHiCHkQPAgI" target="_blank"> ola</a>',
+     //Logo
+      logoText: "Vue.JS",
+      /* logoImg: "require('../src/assets/logo.png')",  PREGUNTAR*/
+     //Texto
+     vText1: "Hola mundo! Bienvenido a mi primera pagina web con VUE.JS",
+     //Imagenes
+     //Rutas
+     
+     
+     textoHtml: '<a class="button" href="https://pandaxportfolio.netlify.app/" target="_blank"> ir alla</a>',
      inputText: "Escibe un texto" ,
+
    }
  },
 }
@@ -24,11 +55,85 @@ export default {
 
 
 <style>
-html{
-  height: 100%;
+/*CSS EN VUE */
+/*Fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Indie+Flower&family=Pacifico&display=swap');/*Estilos */
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+    
 }
-body{
-  background-image: linear-gradient(0deg, rgba(7,180,145,0.8491879350348028) 0%, rgba(9,121,116,1) 31%, rgba(2,195,229,1) 75%, rgba(0,212,255,1) 100%);
-  height: 100%;
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+body {
+    font-size: 1.6rem;
+    line-height: 1.8;
+    background-color: #34495E;
+    
+}
+
+h1, h2, h2{
+  font-family: 'Pacifico', cursive;
+  
+}
+
+.logo{
+  color: #41B883;
+  text-shadow: 0 -.5rem #34495E,
+                0 0px 10px #000;
+}
+
+p, a{
+  font-family: 'Comfortaa', cursive;
+}
+
+header, footer{
+  background: rgb(63, 63, 63);
+  height: 10rem;
+}
+header{
+  position: relative;
+
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0.5rem 11px 2px #111111;
+}
+header img{
+  width: 5rem;
+  height: 5rem;
+}
+.section1{
+  background: azure;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+
+}
+
+.titulo{
+  width: 100%;
+  text-align: center;
+}
+.titulo h2{
+  font-family: 'Comfortaa', cursive;
+  color: azure;
+}
+.button{
+
+  padding: 1rem 2rem;
+  background: azure;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #34495E;
+  font-weight: 700;
+  font-size: 2.4rem;
+  border: 1.5px solid #41B883;
+}
+.button:hover{
+  background: #41B883;
+  
 }
 </style>
