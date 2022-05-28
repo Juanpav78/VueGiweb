@@ -11,16 +11,48 @@
       <img src="../src/assets/logo.png" alt="Logo Vue">
       <img src="../src/assets/logo.png" alt="Logo Vue">
     </section>
-    <main>
+    <main :class="cont">
       <div class="titulo">
         <h2 v-text="vText1"></h2>
       </div>
+      <div class="info">
+        <p v-text="lorem"></p>
+        <p v-text="lorem"></p>
+        <p v-text="lorem"></p>
+
+      </div>
+      <div class="imagenes">
+      <img :src="img1">
+      <img :src="img2">
+      <img :src="img3">
+      </div>
+      <p v-text="lorem"></p>
+      <p v-text="lorem"></p>
+      <div class="contain2"> 
+
+        <div class="carta">
+          <img :src="img4" alt="">
+          <p v-text="vText2"></p>
+          <div v-html="buttonGit"></div>
+        </div>
+
+        <div class="carta">
+          <img :src="img5" alt="">
+          <p v-text="vText3"></p>
+          <div v-html="buttonPic"></div>
+        </div>
+
+        <div class="carta">
+          <img :src="img6" alt="">
+          <p v-text="vText4"></p>
+          <div v-html="buttonPorta"></div>
+        </div>
       
-      <p v-html="textoHtml"> </p>
-      <input class="button" type="button" href="www.google.com" v-model="inputText">
+      </div>
+      <input class="button separador" type="text"  v-model="inputText">
     </main>
     <footer>
-
+      <p>© 2022 - Juan Alvarado </p>
     </footer>
     
     
@@ -38,13 +70,25 @@ export default {
       logoText: "Vue.JS",
       /* logoImg: "require('../src/assets/logo.png')",  PREGUNTAR*/
      //Texto
+     lorem:"Lorem ipsum dolor sit amet consectetur adipiscing elit ligula aliquam accumsan, odio curae ac primis aptent potenti ad et. A accumsan aliquam erat dapibus nulla varius convallis est velit nisi, cubilia inceptos auctor dignissim",
      vText1: "Hola mundo! Bienvenido a mi primera pagina web con VUE.JS",
+     vText2:"Para ver mis github y mis otros proyectos" ,
+     vText3:"Para ver más imagenes como estas gracias a Lorem Picsum" ,
+     vText4:"Para ver mi portafolio aunque no este terminado" ,
      //Imagenes
+     img1: "https://i.picsum.photos/id/1020/4288/2848.jpg?hmac=Jo3ofatg0fee3HGOliAIIkcg4KGXC8UOTO1dm5qIIPc",
+     img2: "https://i.picsum.photos/id/1025/4951/3301.jpg?hmac=_aGh5AtoOChip_iaMo8ZvvytfEojcgqbCH7dzaz-H8Y",
+     img3: "https://i.picsum.photos/id/1084/4579/3271.jpg?hmac=YblMazviSugJVfZsFPaFI_Vp6lBeQin62qpm8rxHruo",
+     img4: "https://i.picsum.photos/id/1042/3456/5184.jpg?hmac=5xr8Veg2D_kEQQO6rvGj_Yk8s_N4iq3-eZ9_KclSXNQ",
+     img5: "https://i.picsum.photos/id/103/2592/1936.jpg?hmac=aC1FT3vX9bCVMIT-KXjHLhP6vImAcsyGCH49vVkAjPQ",
+     img6: "https://i.picsum.photos/id/1035/5854/3903.jpg?hmac=DV0AS2MyjW6ddofvSIU9TVjj1kewfh7J3WEOvflY8TM",
      //Rutas
-     
-     
-     textoHtml: '<a class="button" href="https://pandaxportfolio.netlify.app/" target="_blank"> ir alla</a>',
+     buttonPorta:'<a class="button" href="https://pandaxportfolio.netlify.app/" target="_blank"> Portafolio</a>',
+     buttonGit:'<a class="button" href="https://github.com/Juanpav78/" target="_blank"> Github </a>',
+     buttonPic:'<a class="button" href="https://picsum.photos/" target="_blank"> Lorem Picsum </a>',
      inputText: "Escibe un texto" ,
+     //Variables
+     cont: "contenedor",
 
    }
  },
@@ -73,6 +117,7 @@ body {
     
 }
 
+
 h1, h2, h2{
   font-family: 'Pacifico', cursive;
   
@@ -86,6 +131,9 @@ h1, h2, h2{
 
 p, a{
   font-family: 'Comfortaa', cursive;
+  color: azure;
+  font-size: 1.8rem;
+  font-weight: 600;
 }
 
 header, footer{
@@ -105,14 +153,23 @@ header img{
   width: 5rem;
   height: 5rem;
 }
-.section1{
-  background: azure;
+.section1, .imagenes, .contain2{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
+}
+
+.section1, .carta{
+  background: azure;
+  
+
 
 }
 
+.contenedor{
+  max-width: 120rem;
+  margin: 0 auto;
+}
 .titulo{
   width: 100%;
   text-align: center;
@@ -121,19 +178,57 @@ header img{
   font-family: 'Comfortaa', cursive;
   color: azure;
 }
-.button{
 
+
+.button{
+  display: block;
+  width: 100%;
   padding: 1rem 2rem;
-  background: azure;
-  border-radius: 5px;
+  background: rgb(63, 63, 63);
   text-decoration: none;
   color: #34495E;
   font-weight: 700;
   font-size: 2.4rem;
-  border: 1.5px solid #41B883;
+  color: azure;
+  margin-top: 1.4rem;
+  text-align: center;
 }
 .button:hover{
   background: #41B883;
+  color: #34495E;
   
+}
+
+.imagenes img, .carta img{
+  width: 39rem;
+  height: 26rem;
+}
+.imagenes img:hover{
+  filter: blur(2px);
+}
+
+.contain2{
+  gap: 2rem;
+}
+
+.carta{
+  height: 40rem;
+  
+}
+.carta p{
+  color: #111111;
+  width: 80%;
+  margin: 0 auto;
+  
+}
+.separador{
+  margin: 4rem auto 3rem auto;
+}
+
+footer{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
