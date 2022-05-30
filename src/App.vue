@@ -134,6 +134,7 @@ p, a{
   color: azure;
   font-size: 1.8rem;
   font-weight: 600;
+  text-align: justify;
 }
 
 header, footer{
@@ -165,7 +166,12 @@ header img{
 
 
 }
-
+.section1 img{
+  max-width: 20rem;
+  max-height: 20rem;
+  width: 100%;
+  height: 100%;
+}
 .contenedor{
   max-width: 120rem;
   margin: 0 auto;
@@ -190,7 +196,6 @@ header img{
   font-weight: 700;
   font-size: 2.4rem;
   color: azure;
-  margin-top: 1.4rem;
   text-align: center;
 }
 .button:hover{
@@ -200,8 +205,10 @@ header img{
 }
 
 .imagenes img, .carta img{
-  width: 39rem;
-  height: 26rem;
+  max-width: 39rem;
+  max-height: 26rem;
+  width: 100%;
+  height: 100%;
 }
 .imagenes img:hover{
   filter: blur(2px);
@@ -212,13 +219,16 @@ header img{
 }
 
 .carta{
-  height: 40rem;
+  height: 42rem;
   
 }
 .carta p{
   color: #111111;
   width: 80%;
   margin: 0 auto;
+  margin-bottom: .5rem;
+  text-align: justify;
+  height: 9.5rem;
   
 }
 .separador{
@@ -231,4 +241,45 @@ footer{
   justify-content: center;
   align-items: center;
 }
+
+
+@media (max-width: 1000px) {
+ .imagenes img, .carta img{
+  max-width: none;
+  max-height: 25rem;
+  width: 100%;
+  height: 100%;
+}
+.imagenes, .contain2{
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+
+}
+.carta{
+  margin-top:3rem ;
+  height: 40rem;
+  width: 90%;
+  max-width: 50rem;
+}
+.imagenes img{
+  margin:  auto;
+  width: 90%;
+  max-height: 40rem;
+}
+
+}
+@media (max-width: 600px) {
+ .imagenes img, .carta img{
+
+  max-height: 26rem;
+}
+
+
+.imagenes img{
+  margin:  auto;
+  width: 90%;
+}
+
+}
+
 </style>
