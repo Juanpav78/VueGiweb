@@ -49,7 +49,48 @@
         </div>
       
       </div>
-      <input class="button separador" type="text"  v-model="inputText">
+      
+      <input class="button separador" v-model="inputEvent" type="text" @keypress="presionaTecla()">
+      
+      <section class="clase3 contenedor">
+        <div :class="caja">
+        <h3>{{contador}}</h3>
+        <p>{{parrafo}}</p>
+        </div>
+        <div class="caja_control">
+
+          <div class="caja_control_numeros">
+            <button @click="decrecerContador()">-</button>
+            <h3>Aumentar o disminuir numero</h3>
+            
+            <button @click="incrementarContador()">+</button>
+          </div>
+           <div class="caja_control_colores">
+             <h3>Cambiar color</h3>
+             <select :class="caja" v-model="colorContenedor" @change="cambiarColor()" name="" id="">
+            <option value="--Selecione--">--Selecione--</option>
+            <option value="caja verde">verde</option>
+            <option value="caja azul">azul</option>
+            <option value="caja rojo">rojo</option>
+            </select> 
+           </div> 
+            <div class="caja_control_texto">
+              <h3>Cambiar texto</h3>
+              <form>
+              <textarea name="" id="" cols="47" rows="5" v-model="inputForm"></textarea>
+              <a class="button"  @click="enviarFormulario()">Enviar</a>
+              </form>
+            </div>
+            
+        </div>
+      </section>
+
+
+    
+    
+        
+
+        
     </main>
     <footer>
       <p>© 2022 - Juan Alvarado </p>
@@ -89,9 +130,32 @@ export default {
      inputText: "Escibe un texto" ,
      //Variables
      cont: "contenedor",
-
+     //CONTADOR
+     contador: 0,
+     inputEvent: "" ,
+     inputForm: "" ,
+     parrafo: "Lorem ipsum dolor sit amet consectetur adipiscing elit ligula aliquam accumsan, odio curae ac primis aptent potenti ad et. A accumsan aliquam erat dapibus nulla varius convallis est velit nisi, cubilia inceptos auctor dignissim",
+     caja:"caja",
+     colorContenedor: "--Selecione--",
    }
  },
+  methods: {
+    incrementarContador(){
+      this.contador++;
+    },
+    decrecerContador(){
+      this.contador--;
+    },
+    presionaTecla(){
+      alert(this.inputEvent);
+    },
+    cambiarColor(){
+      this.caja = this.colorContenedor;
+    },
+    enviarFormulario(){
+       this.parrafo = this.inputForm;
+    },
+    },
 }
 </script>
 
@@ -100,6 +164,23 @@ export default {
 
 <style>
 /*CSS EN VUE */
+/*Colores*/
+
+.verde{
+  background: #41B883;
+}
+
+.gris{
+  background: #34495E;
+}
+
+.rojo{
+  background: #8d2929
+}
+
+.azul{
+  background: #0e4881
+}
 /*Fuentes */
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Indie+Flower&family=Pacifico&display=swap');/*Estilos */
 html {
@@ -118,7 +199,7 @@ body {
 }
 
 
-h1, h2, h2{
+h1, h2, h3{
   font-family: 'Pacifico', cursive;
   
 }
@@ -243,6 +324,75 @@ footer{
 }
 
 
+.clase3{
+  display: flex;
+  justify-content: space-around;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+
+.clase3 div{
+  flex: 1;
+  height: 35rem;
+  max-height: 35rem;
+  max-width: 40rem;
+}
+
+.clase3 .caja:first-child{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: dashed 3px #111111;
+    flex-direction: column;
+    padding: 2.4rem;
+    
+}
+
+.caja_control{
+  display: flex;
+  flex-direction: column;
+  background: rgb(63, 63, 63);
+  
+}
+
+.caja_control .caja_control_numeros{
+  display: flex;
+  justify-content: space-between;
+  padding: .5rem 1rem;
+}
+.caja_control .caja_control_numeros button{
+  width: 3rem;
+  height: 3rem;
+  background: azure;
+  border: none;
+  box-shadow: inset 0 0 3px;
+  border-radius: 3px;
+  font-family: 'Comfortaa', cursive;
+  font-weight: 600;
+}
+.caja_control h3{
+  font-family: 'Comfortaa', cursive;
+  margin: 0;
+  font-weight: 400;
+  text-align: center;
+  text-decoration: underline 2px #41B883;
+  color: azure;
+}
+.caja_control .caja_control_colores select{
+  width: 100%;
+  height: 3.5rem;
+  text-align: center;
+  font-family: 'Comfortaa', cursive;
+}
+.caja_control .caja_control_texto .button{
+  border-top: solid 2px #41B883;
+}
+
+textarea{
+  width: 100%;
+}
+
 @media (max-width: 1000px) {
  .imagenes img, .carta img{
   max-width: none;
@@ -279,7 +429,9 @@ footer{
   margin:  auto;
   width: 90%;
 }
-
+.clase3{
+  flex-direction: column;
+  
 }
-
+}
 </style>
